@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace TokoBeDia.Views
 {
-    public partial class Test : System.Web.UI.Page
+    public partial class Site : System.Web.UI.MasterPage
     {
         protected void Page_Load(object sender, EventArgs e)
         {

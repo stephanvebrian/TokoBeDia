@@ -14,22 +14,14 @@ namespace TokoBeDia
     
     public partial class User
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
-        {
-            this.HeaderTransactions = new HashSet<HeaderTransaction>();
-        }
-    
-        public int ID { get; set; }
-        public int RoleID { get; set; }
+        public int Id { get; set; }
+        public int RoleId { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
         public string Gender { get; set; }
         public int StatusId { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HeaderTransaction> HeaderTransactions { get; set; }
         public virtual Role Role { get; set; }
         public virtual Status Status { get; set; }
     }

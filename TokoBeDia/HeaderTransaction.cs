@@ -26,6 +26,5 @@ namespace TokoBeDia
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailTransaction> DetailTransactions { get; set; }
-        public virtual User User { get; set; }
     }
 }

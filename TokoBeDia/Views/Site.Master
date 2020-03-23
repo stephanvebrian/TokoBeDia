@@ -1,0 +1,109 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="TokoBeDia.Views.Site" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>@TokoBeDia</title>
+    <meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Little Closet template">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    
+    <%--Stylesheet--%>
+    <link href="../Content/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link href="../Content/css/styles.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="style" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    
+        <div class="super_container">
+
+		<!-- Header -->
+
+		<header class="header">
+			<div class="header_overlay"></div>
+			<div class="header_content d-flex flex-row align-items-center justify-content-start">
+				<div class="logo">
+					<a href="#">
+						<div class="d-flex flex-row align-items-center justify-content-start">
+							<div>@TokoBeDia</div>
+						</div>
+					</a>
+				</div>
+				<nav class="main_nav">
+                    <asp:ContentPlaceHolder ID="navbarContainer" runat="server">
+                    </asp:ContentPlaceHolder>
+				</nav>
+				<div class="header_right d-flex flex-row align-items-center justify-content-start ml-auto">
+					<!-- User -->
+					<div class="user">
+						<a class="" href="#">
+							<div>
+								<h4>
+                                    <asp:ContentPlaceHolder ID="informationLabel" runat="server">
+
+                                    </asp:ContentPlaceHolder>
+                                    
+                                </h4>
+							</div>
+						</a>
+					</div>
+
+				</div>
+			</div>
+		</header>
+
+		<div class="super_container_inner">
+			<div class="super_overlay"></div>
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+            </asp:ContentPlaceHolder>
+			<!-- Footer -->
+
+			<footer class="footer">
+				<div class="footer_content">
+					<div class="container">
+						<div class="row">
+
+							<!-- About -->
+							<div class="col-lg-4 footer_col">
+								<div class="footer_about">
+									<div class="footer_logo">
+										<a href="#">
+											<div class="d-flex flex-row align-items-center justify-content-start">
+												<div>@TokoBeDia</div>
+											</div>
+										</a>
+									</div>
+									<div class="footer_about_text">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</footer>
+		</div>
+
+	</div>
+
+    
+
+
+    </form>
+    
+
+    <script src="../Content/js/jquery-3.2.1.min.js"></script>
+    <script src="../Content/js/popper.js"></script>
+    <script src="../Content/js/bootstrap.min.js"></script>
+</body>
+</html>

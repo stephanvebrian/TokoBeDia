@@ -7,27 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-
-public partial class DatabaseEntities : DbContext
+namespace TokoBeDia
 {
-    public DatabaseEntities()
-        : base("name=DatabaseEntities")
+    using System;
+    using System.Data.Entity;
+    using System.Data.Entity.Infrastructure;
+    
+    public partial class DatabaseEntities : DbContext
     {
+        public DatabaseEntities()
+            : base("name=DatabaseEntities")
+        {
+        }
+    
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            throw new UnintentionalCodeFirstException();
+        }
+    
+        public virtual DbSet<HeaderTransaction> HeaderTransactions { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<ProductType> ProductTypes { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<DetailTransaction> DetailTransactions { get; set; }
+        public virtual DbSet<User> Users { get; set; }
     }
-
-    protected override void OnModelCreating(DbModelBuilder modelBuilder)
-    {
-        throw new UnintentionalCodeFirstException();
-    }
-
-    public virtual DbSet<HeaderTransaction> HeaderTransactions { get; set; }
-    public virtual DbSet<Product> Products { get; set; }
-    public virtual DbSet<ProductType> ProductTypes { get; set; }
-    public virtual DbSet<Role> Roles { get; set; }
-    public virtual DbSet<Status> Status { get; set; }
-    public virtual DbSet<User> Users { get; set; }
-    public virtual DbSet<DetailTransaction> DetailTransactions { get; set; }
 }

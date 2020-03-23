@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DESIGN - BE01 - COMP6114\LAB\ASSIGNMENT\TOKOBEDIA\TOKOBEDIA\APP_DATA\DATABASE.MDF.dbo.DetailTransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DetailTransactions">
@@ -58,10 +58,10 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
           <Property Name="Name" Type="varchar(max)" />
           <Property Name="Email" Type="varchar(max)" Nullable="false" />
           <Property Name="Password" Type="varchar(max)" Nullable="false" />
@@ -92,18 +92,6 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__HeaderTra__UserI__36B12243">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="HeaderTransactions" Type="Self.HeaderTransactions" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HeaderTransactions">
-              <PropertyRef Name="UserId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__Products__Produc__403A8C7D">
           <End Role="ProductTypes" Type="Self.ProductTypes" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
@@ -116,7 +104,7 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RoleID__286302EC">
+        <Association Name="FK__Users__RoleId__5DCAEF64">
           <End Role="Roles" Type="Self.Roles" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,11 +112,11 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="Users">
-              <PropertyRef Name="RoleID" />
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__StatusId__25869641">
+        <Association Name="FK__Users__StatusId__5CD6CB2B">
           <End Role="Status" Type="Self.Status" Multiplicity="1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
@@ -162,25 +150,20 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__HeaderTra__UserI__36B12243" Association="Self.FK__HeaderTra__UserI__36B12243">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
-          </AssociationSet>
           <AssociationSet Name="FK__Products__Produc__403A8C7D" Association="Self.FK__Products__Produc__403A8C7D">
             <End Role="ProductTypes" EntitySet="ProductTypes" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__RoleID__286302EC" Association="Self.FK__Users__RoleID__286302EC">
+          <AssociationSet Name="FK__Users__RoleId__5DCAEF64" Association="Self.FK__Users__RoleId__5DCAEF64">
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__StatusId__25869641" Association="Self.FK__Users__StatusId__25869641">
+          <AssociationSet Name="FK__Users__StatusId__5CD6CB2B" Association="Self.FK__Users__StatusId__5CD6CB2B">
             <End Role="Status" EntitySet="Status" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -192,7 +175,6 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           <Property Name="UserId" Type="Int32" Nullable="false" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <NavigationProperty Name="DetailTransactions" Relationship="Self.FK__DetailTra__Trans__3E52440B" FromRole="HeaderTransactions" ToRole="DetailTransactions" />
-          <NavigationProperty Name="User" Relationship="Self.FK__HeaderTra__UserI__36B12243" FromRole="HeaderTransactions" ToRole="Users" />
         </EntityType>
         <EntityType Name="Product">
           <Key>
@@ -221,7 +203,7 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__RoleID__286302EC" FromRole="Roles" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="DatabaseModel.FK__Users__RoleId__5DCAEF64" FromRole="Role" ToRole="User" />
         </EntityType>
         <EntityType Name="Status">
           <Key>
@@ -229,22 +211,7 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Users__StatusId__25869641" FromRole="Status" ToRole="Users" />
-        </EntityType>
-        <EntityType Name="User">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleID" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="StatusId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="HeaderTransactions" Relationship="Self.FK__HeaderTra__UserI__36B12243" FromRole="Users" ToRole="HeaderTransactions" />
-          <NavigationProperty Name="Role" Relationship="Self.FK__Users__RoleID__286302EC" FromRole="Users" ToRole="Roles" />
-          <NavigationProperty Name="Status" Relationship="Self.FK__Users__StatusId__25869641" FromRole="Users" ToRole="Status" />
+          <NavigationProperty Name="Users" Relationship="DatabaseModel.FK__Users__StatusId__5CD6CB2B" FromRole="Status" ToRole="User" />
         </EntityType>
         <EntityType Name="DetailTransaction">
           <Key>
@@ -266,18 +233,6 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Principal>
             <Dependent Role="DetailTransactions">
               <PropertyRef Name="TransactionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__HeaderTra__UserI__36B12243">
-          <End Role="Users" Type="Self.User" Multiplicity="1" />
-          <End Role="HeaderTransactions" Type="Self.HeaderTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="HeaderTransactions">
-              <PropertyRef Name="UserId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -305,45 +260,16 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Users__RoleID__286302EC">
-          <End Role="Roles" Type="Self.Role" Multiplicity="1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Roles">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="RoleID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__Users__StatusId__25869641">
-          <End Role="Status" Type="Self.Status" Multiplicity="1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Status">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="Users">
-              <PropertyRef Name="StatusId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="HeaderTransactions" EntityType="Self.HeaderTransaction" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Status" EntityType="Self.Status" />
-          <EntitySet Name="Users" EntityType="Self.User" />
           <EntitySet Name="DetailTransactions" EntityType="Self.DetailTransaction" />
           <AssociationSet Name="FK__DetailTra__Trans__3E52440B" Association="Self.FK__DetailTra__Trans__3E52440B">
             <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
-          </AssociationSet>
-          <AssociationSet Name="FK__HeaderTra__UserI__36B12243" Association="Self.FK__HeaderTra__UserI__36B12243">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
           </AssociationSet>
           <AssociationSet Name="FK__DetailTra__Produ__3F466844" Association="Self.FK__DetailTra__Produ__3F466844">
             <End Role="Products" EntitySet="Products" />
@@ -353,16 +279,55 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             <End Role="ProductTypes" EntitySet="ProductTypes" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__RoleID__286302EC" Association="Self.FK__Users__RoleID__286302EC">
-            <End Role="Roles" EntitySet="Roles" />
-            <End Role="Users" EntitySet="Users" />
+          <EntitySet Name="Users" EntityType="DatabaseModel.User" />
+          <AssociationSet Name="FK__Users__RoleId__5DCAEF64" Association="DatabaseModel.FK__Users__RoleId__5DCAEF64">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
-          <AssociationSet Name="FK__Users__StatusId__25869641" Association="Self.FK__Users__StatusId__25869641">
+          <AssociationSet Name="FK__Users__StatusId__5CD6CB2B" Association="DatabaseModel.FK__Users__StatusId__5CD6CB2B">
             <End Role="Status" EntitySet="Status" />
-            <End Role="Users" EntitySet="Users" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema>
+          </EntityContainer>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="DatabaseModel.FK__Users__RoleId__5DCAEF64" FromRole="User" ToRole="Role" />
+          <NavigationProperty Name="Status" Relationship="DatabaseModel.FK__Users__StatusId__5CD6CB2B" FromRole="User" ToRole="Status" />
+        </EntityType>
+        <Association Name="FK__Users__RoleId__5DCAEF64">
+          <End Type="DatabaseModel.Role" Role="Role" Multiplicity="1" />
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Users__StatusId__5CD6CB2B">
+          <End Type="DatabaseModel.Status" Role="Status" Multiplicity="1" />
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -413,25 +378,25 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="DatabaseModel.User">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="DetailTransactions">
             <EntityTypeMapping TypeName="DatabaseModel.DetailTransaction">
               <MappingFragment StoreEntitySet="DetailTransactions">
                 <ScalarProperty Name="TransactionId" ColumnName="TransactionId" />
                 <ScalarProperty Name="ProductId" ColumnName="ProductId" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="DatabaseModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

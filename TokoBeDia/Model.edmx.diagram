@@ -10,14 +10,13 @@
         <EntityTypeShape EntityType="DatabaseModel.ProductType" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.Role" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.Status" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="DatabaseModel.DetailTransaction" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
         <AssociationConnector Association="DatabaseModel.FK__DetailTra__Trans__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK__HeaderTra__UserI__36B12243" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK__DetailTra__Produ__3F466844" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseModel.FK__Products__Produc__403A8C7D" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK__Users__RoleID__286302EC" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseModel.FK__Users__StatusId__25869641" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="3" PointY="1" />
+        <AssociationConnector Association="DatabaseModel.FK__Users__RoleId__5DCAEF64" />
+        <AssociationConnector Association="DatabaseModel.FK__Users__StatusId__5CD6CB2B" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
