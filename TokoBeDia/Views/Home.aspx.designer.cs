@@ -76,15 +76,6 @@ namespace TokoBeDia.Views {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor user_view;
         
         /// <summary>
-        /// user_insert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor user_insert;
-        
-        /// <summary>
         /// productsNavbar control.
         /// </summary>
         /// <remarks>
@@ -181,6 +172,24 @@ namespace TokoBeDia.Views {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl notificationcontainer;
+        protected global::System.Web.UI.WebControls.Label notificationcontainer;
+        
+        /// <summary>
+        /// gv_ViewProductAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_ViewProductAdmin;
+        
+        /// <summary>
+        /// gv_ViewProductPublic control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gv_ViewProductPublic;
     }
 }

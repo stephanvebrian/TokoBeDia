@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
 @font-face
 {
@@ -1657,4 +1657,32 @@ section
 	font-size: 16px;
 	color: #969696;
 	font-weight: 300;
+}
+
+/* Grid View Styling */
+.table, .table-condensed
+{
+    margin: 0 auto;
+}
+.table-condensed tr th 
+{
+    border: 0px solid #6e7bd9;
+    color: white;
+    background-color: #1eb2a6;
+}
+
+.table-condensed, .table-condensed tr td 
+{
+    border: 0px solid #000;
+    color: #424874;
+}
+
+tr:nth-child(even) 
+{
+    background: #f8f7ff
+}
+
+tr:nth-child(odd) 
+{
+    background: #fff;
 }

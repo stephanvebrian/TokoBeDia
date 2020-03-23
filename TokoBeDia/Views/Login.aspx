@@ -12,18 +12,22 @@
                     <li class="nav-item" id="homeNavbar" runat="server">
                         <a class="nav-link" href="Home.aspx">Home</a>
                     </li>
-                    <li class="nav-item" id="profileNavbar" runat="server">
-                        <a class="nav-link" href="#">Profile</a>
+                    <li class="nav-item dropdown" id="profileNavbar" runat="server">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="~/Views/Profile/View.aspx" id="profile_view" runat="server">View Profile</a>
+                            <a class="dropdown-item" href="~/Views/Profile/Edit.aspx" id="profile_changeprof" runat="server">Change Profile</a>
+                            <a class="dropdown-item" href="~/Views/Profile/ChangePassword.aspx" id="profile_changepass" runat="server">Change Password</a>
+                        </div>
                     </li>
                     <li class="nav-item dropdown" id="usersNavbar" runat="server">
                         <a class="nav-link dropdown-toggle" href="#" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Users
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="#" id="user_view" runat="server">View User</a>
-                            <a class="dropdown-item" href="#" id="user_insert" runat="server">Insert User</a>
-                            <a class="dropdown-item" href="#" id="user_update" runat="server">Update User</a>
-                            <a class="dropdown-item" href="#" id="user_delete" runat="server">Delete User</a>
+                            <a class="dropdown-item" href="~/Views/User/View.aspx" id="user_view" runat="server">View User</a>
+                            <%--<a class="dropdown-item" href="#" id="user_update" runat="server">Update User</a>--%>
+                            <%--<a class="dropdown-item" href="#" id="user_delete" runat="server">Delete User</a>--%>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="productsNavbar" runat="server">
@@ -31,10 +35,10 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" href="#" id="product_view" runat="server">View Product</a>
-                            <a class="dropdown-item" href="#" id="product_insert" runat="server">Insert Product</a>
-                            <a class="dropdown-item" href="#" id="product_update" runat="server" visible="false">Update Product</a>
-                            <a class="dropdown-item" href="#" id="product_delete" runat="server" visible="false">Delete Product</a>
+                            <a class="dropdown-item" href="~/Views/Product/View.aspx" id="product_view" runat="server">View Product</a>
+                            <a class="dropdown-item" href="~/Views/Product/Add.aspx" id="product_insert" runat="server">Insert Product</a>
+                            <%--<a class="dropdown-item" href="#" id="product_update" runat="server" visible="false">Update Product</a>--%>
+                            <%--<a class="dropdown-item" href="#" id="product_delete" runat="server" visible="false">Delete Product</a>--%>
                         </div>
                     </li>
                     <li class="nav-item dropdown" id="productTypesNavbar" runat="server">
@@ -42,10 +46,10 @@
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Product Types
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <a class="dropdown-item" href="#" id="ptype_view" runat="server">View Product Types</a>
-                            <a class="dropdown-item" href="#" id="ptype_insert" runat="server">Insert Product Types</a>
-                            <a class="dropdown-item" href="#" id="ptype_update" runat="server" visible="false">Update Product Types</a>
-                            <a class="dropdown-item" href="#" id="ptype_delete" runat="server" visible="false">Delete Product Types</a>
+                            <a class="dropdown-item" href="~/Views/ProductType/View.aspx" id="ptype_view" runat="server">View Product Types</a>
+                            <a class="dropdown-item" href="~/Views/ProductType/Add.aspx" id="ptype_insert" runat="server">Insert Product Types</a>
+                            <%--<a class="dropdown-item" href="#" id="ptype_update" runat="server" visible="false">Update Product Types</a>--%>
+                            <%--<a class="dropdown-item" href="#" id="ptype_delete" runat="server" visible="false">Delete Product Types</a>--%>
                         </div>
                     </li>
                     <li class="nav-item" id="loginNavbar" runat="server">
@@ -55,13 +59,14 @@
                         <a class="nav-link" href="Register.aspx">Register</a>
                     </li>
                     <li class="nav-item" id="logoutNavbar" runat="server">
-                        <a class="nav-link" href="#">Logout</a>
+                        <a class="nav-link" href="Logout.aspx">Logout</a>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </asp:Content>
+
 
 <asp:Content ID="Content4" ContentPlaceHolderID="informationLabel" runat="server">
 </asp:Content>
@@ -76,13 +81,16 @@
                       <div class="form-group">
                         <label for="email">Email address*</label>
                         <asp:TextBox ID="inputEmail" CssClass="form-control" runat="server" TextMode="Email"></asp:TextBox>
-                        <asp:Label ID="emailHelp" CssClass="form-text text-muted" runat="server" Text="Error" Visible="false"></asp:Label>
                       </div>
                       <div class="form-group">
                         <label for="password">Password*</label>
                         <asp:TextBox ID="inputPassword" CssClass="form-control" runat="server" TextMode="Password"></asp:TextBox>
-                        <asp:Label ID="passwordHelp" CssClass="form-text text-muted" runat="server" Text="Error" Visible="false"></asp:Label>
                       </div>
+                      <div class="form-group">
+                        <asp:CheckBox ID="cboxRememberMe" CssClass="form-check-input" runat="server"/>
+                        <label class="form-check-label" for="remember-me">Remember me</label>
+                      </div>
+                      <asp:Label ID="loginHelp" CssClass="form-text text-muted" runat="server" Text="Error" Visible="false"></asp:Label>
                       <asp:Button ID="btnLogin" CssClass="btn btn-primary" runat="server" Text="Login Me!" OnClick="btnLogin_Click" />
                     <br />
                 </div>
@@ -90,3 +98,12 @@
         </div>
     </div>
 </asp:Content>
+
+<asp:Content ID="js" ContentPlaceHolderID="script" runat="server">
+    <script src="../Content/js/jquery-3.2.1.min.js"></script>
+    <script src="../Content/js/popper.js"></script>
+    <script src="../Content/js/bootstrap.min.js"></script>
+</asp:Content>
+
+
+

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TokoBeDia.Class;
+using TokoBeDia.Repository;
 
 namespace TokoBeDia.Views
 {
@@ -34,7 +36,6 @@ namespace TokoBeDia.Views
 
                 usersNavbar.Visible = false;
                 user_view.Visible = false;
-                user_insert.Visible = false;
 
                 productsNavbar.Visible = true;
                 product_view.Visible = true;
@@ -54,8 +55,41 @@ namespace TokoBeDia.Views
 
         protected void btnLogin_Click(object sender, EventArgs e)
         {
+            loginHelp.Visible = false;
+
             var email = inputEmail.Text;
             var password = inputPassword.Text;
+            var rememberMe = cboxRememberMe.Checked;
+
+            if (email.Length <= 0)
+            {
+                loginHelp.Text = "Email cannot be empty";
+                loginHelp.Visible = true;
+                return;
+            }
+
+            if (password.Length <= 0)
+            {
+                loginHelp.Text = "Password cannot be empty";
+                loginHelp.Visible = true;
+                return;
+            }
+
+            var user = UserRepository.findByEmail(email, password);
+            if(user == null)
+            {
+                loginHelp.Text = "Credentials not found";
+                loginHelp.Visible = true;
+                return;
+            }
+
+
+            // set session and timeout (60 minutes) for default
+            Session["user"] = user.Id;
+            if (rememberMe) Session.Timeout = (60*24)*300;
+            else Session.Timeout = 60;
+
+            Response.Redirect("Home.aspx");
         }
     }
 }

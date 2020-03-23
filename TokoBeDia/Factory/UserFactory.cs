@@ -19,7 +19,8 @@ namespace TokoBeDia.Factory
                 Name = name,
                 Password = password,
                 RoleId = 2,
-                StatusId = 1
+                StatusId = 1,
+                Gender = gender
             };
         }
     }

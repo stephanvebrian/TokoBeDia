@@ -7,9 +7,15 @@ namespace TokoBeDia.Class
 {
     public class Crypto
     {
-        public static string Encrypt(string data)
+        public static string EncryptStr(string data)
         {
-            return "aw";
+            return data;
         }
+
+        public static string DecryptStr(string data)
+        {
+            return data;
+        }
+
     }
 }

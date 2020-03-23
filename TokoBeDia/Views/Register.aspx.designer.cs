@@ -31,6 +31,33 @@ namespace TokoBeDia.Views {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl profileNavbar;
         
         /// <summary>
+        /// profile_view control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor profile_view;
+        
+        /// <summary>
+        /// profile_changeprof control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor profile_changeprof;
+        
+        /// <summary>
+        /// profile_changepass control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor profile_changepass;
+        
+        /// <summary>
         /// usersNavbar control.
         /// </summary>
         /// <remarks>
@@ -47,33 +74,6 @@ namespace TokoBeDia.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor user_view;
-        
-        /// <summary>
-        /// user_insert control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor user_insert;
-        
-        /// <summary>
-        /// user_update control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor user_update;
-        
-        /// <summary>
-        /// user_delete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor user_delete;
         
         /// <summary>
         /// productsNavbar control.
@@ -103,24 +103,6 @@ namespace TokoBeDia.Views {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor product_insert;
         
         /// <summary>
-        /// product_update control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor product_update;
-        
-        /// <summary>
-        /// product_delete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor product_delete;
-        
-        /// <summary>
         /// productTypesNavbar control.
         /// </summary>
         /// <remarks>
@@ -146,24 +128,6 @@ namespace TokoBeDia.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ptype_insert;
-        
-        /// <summary>
-        /// ptype_update control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ptype_update;
-        
-        /// <summary>
-        /// ptype_delete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor ptype_delete;
         
         /// <summary>
         /// loginNavbar control.

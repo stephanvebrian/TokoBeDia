@@ -18,9 +18,73 @@ namespace TokoBeDia.Views
             {
                 // if user Logged on
                 var userId = int.Parse(userSession.ToString());
-                User user = UserRepository.findById(userId);
+                var user = UserRepository.findById(userId);
 
-            }else
+                role.InnerText = user.Role.Name;
+                notificationcontainer.Text = "";
+
+                if (user.RoleId == 1)
+                {
+                    // Admin
+                    #region set admin navbar visible
+                    homeNavbar.Visible = true;
+
+                    profileNavbar.Visible = true;
+                    profile_view.Visible = true;
+                    profile_changeprof.Visible = true;
+                    profile_changepass.Visible = true;
+
+                    usersNavbar.Visible = true;
+                    user_view.Visible = true;
+
+                    productsNavbar.Visible = true;
+                    product_view.Visible = true;
+                    product_insert.Visible = true;
+
+                    productTypesNavbar.Visible = true;
+                    ptype_view.Visible = true;
+                    ptype_insert.Visible = true;
+
+                    loginNavbar.Visible = false;
+                    registerNavbar.Visible = false;
+                    logoutNavbar.Visible = true;
+                    #endregion set navbar visible
+                    gv_ViewProductAdmin.Visible = true;
+                    gv_ViewProductPublic.Visible = false;
+                }
+                else if (user.RoleId == 2)
+                {
+                    // Member
+                    #region set member navbar visible
+                    homeNavbar.Visible = true;
+
+                    profileNavbar.Visible = true;
+                    profile_view.Visible = true;
+                    profile_changeprof.Visible = true;
+                    profile_changepass.Visible = true;
+
+                    usersNavbar.Visible = false;
+                    user_view.Visible = false;
+
+                    productsNavbar.Visible = true;
+                    product_view.Visible = true;
+                    product_insert.Visible = false;
+
+                    productTypesNavbar.Visible = false;
+                    ptype_view.Visible = false;
+                    ptype_insert.Visible = false;
+
+                    loginNavbar.Visible = false;
+                    registerNavbar.Visible = false;
+                    logoutNavbar.Visible = true;
+                    #endregion set navbar visible
+                    gv_ViewProductAdmin.Visible = false;
+                    gv_ViewProductPublic.Visible = true;
+                }
+
+
+            }
+            else
             {
                 // If user not logged on
 
@@ -34,7 +98,6 @@ namespace TokoBeDia.Views
 
                 usersNavbar.Visible = false;
                 user_view.Visible = false;
-                user_insert.Visible = false;
 
                 productsNavbar.Visible = true;
                 product_view.Visible = true;
@@ -48,12 +111,23 @@ namespace TokoBeDia.Views
                 registerNavbar.Visible = true;
                 logoutNavbar.Visible = false;
                 #endregion set navbar visible
-
                 role.InnerText = "Guest";
-                notificationcontainer.InnerHtml += " <h4>Please Login first</h4>"; ;
-            }
-            
+                notificationcontainer.Text = "Please Login first";
 
+                gv_ViewProductAdmin.Visible = false;
+                gv_ViewProductPublic.Visible = true;
+            }
+
+            refreshTable();
+        }
+
+        private void refreshTable()
+        {
+            gv_ViewProductAdmin.DataSource = ProductRepository.findTopFive();
+            gv_ViewProductAdmin.DataBind();
+
+            gv_ViewProductPublic.DataSource = ProductRepository.findTopFive();
+            gv_ViewProductPublic.DataBind();
         }
     }
 }

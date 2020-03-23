@@ -29,7 +29,7 @@ namespace TokoBeDia.Repository
             }
         }
 
-        public static List<User> getAll()
+        public static List<User> findAll()
         {
             var users = db.Users.ToList();
             return users;
@@ -37,32 +37,78 @@ namespace TokoBeDia.Repository
 
         public static User findById(int id)
         {
-            var user = db.Users.Where(u => u.Id == id).Include(_ => _.Status).Include(_ => _.Role).FirstOrDefault();
+            var user = db.Users.Where(u => u.Id == id)
+                        .Include(_ => _.Status)
+                        .Include(_ => _.Role)
+                        .FirstOrDefault();
 
             return user;
         }
 
         public static User findByEmail(string email)
         {
-            var user = db.Users.Where(u => u.Email.Equals(email)).Include(_ => _.Status).Include(_ => _.Role).FirstOrDefault();
+            var user = db.Users.Where(u => u.Email.Equals(email))
+                                .Include(_ => _.Status)
+                                .Include(_ => _.Role)
+                                .FirstOrDefault();
             //var user = db.Users.Where(u => u.Email.Equals(email)).FirstOrDefault();
 
             return user;
         }
 
-        public static bool checkPassword(string email, string password)
+        public static User findByEmail(string email, string password)
         {
-            return false;
+            var user = db.Users.Where(u => ( u.Email.Equals(email) && u.Password.Equals(password) && u.StatusId == 1 ))
+                                .Include(_ => _.Status)
+                                .Include(_ => _.Role)
+                                .FirstOrDefault();
+
+            return user;
         }
 
-        public static bool edit()
+        public static bool edit(int id, string name, string email, string gender)
         {
-            return false;
+            var u = db.Users.Where(_ => _.Id == id).FirstOrDefault();
+
+            u.Name = name;
+            u.Email = email;
+            u.Gender = gender;
+
+            db.SaveChanges();
+
+            return true;
         }
 
-        public static bool delete()
+        public static bool editPassword(int id, string newPassword)
         {
-            return false;
+            var u = db.Users.Where(_ => _.Id == id).FirstOrDefault();
+
+            u.Password = newPassword;
+
+            db.SaveChanges();
+
+            return true;
+        }
+
+        public static bool editStatus(int id, int statusId)
+        {
+            var u = db.Users.Where(_ => _.Id == id).FirstOrDefault();
+            u.StatusId = statusId;
+
+            db.SaveChanges();
+
+            return true;
+        }
+
+
+        public static bool delete(int id)
+        {
+            var u = db.Users.Where(_ => _.Id == id).FirstOrDefault();
+
+            db.Users.Remove(u);
+            db.SaveChanges();
+
+            return true;
         }
     }
 }

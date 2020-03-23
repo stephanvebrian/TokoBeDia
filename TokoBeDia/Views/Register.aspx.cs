@@ -18,13 +18,12 @@ namespace TokoBeDia.Views
             {
                 // if user Logged on
                 var userId = int.Parse(userSession.ToString());
-                User user = UserRepository.findById(userId);
+                var user = UserRepository.findById(userId);
 
             }
             else
             {
                 // If user not logged on
-
                 #region set navbar visible
                 homeNavbar.Visible = true;
 
@@ -35,7 +34,6 @@ namespace TokoBeDia.Views
 
                 usersNavbar.Visible = false;
                 user_view.Visible = false;
-                user_insert.Visible = false;
 
                 productsNavbar.Visible = true;
                 product_view.Visible = true;
@@ -49,10 +47,7 @@ namespace TokoBeDia.Views
                 registerNavbar.Visible = true;
                 logoutNavbar.Visible = false;
                 #endregion set navbar visible
-
             }
-
-
         }
 
 
@@ -72,23 +67,23 @@ namespace TokoBeDia.Views
             bool error = false;
 
             #region validate input
-            if (email.Length < 4)
+            if (email.Length <= 0)
             {
-                emailHelp.Text = "Email less than 4 character, ";
+                emailHelp.Text = "Email cannot be empty, ";
                 emailHelp.Visible = true;
                 error = true;
             }
 
-            if(name.Length < 4)
+            if(name.Length <= 0)
             {
-                nameHelp.Text = "Name less than 4 character, ";
+                nameHelp.Text = "Name cannot be empty, ";
                 nameHelp.Visible = true;
                 error = true;
             }
 
-            if(password.Length < 4)
+            if(password.Length <= 0)
             {
-                passwordHelp.Text = "Password less than 4 character, ";
+                passwordHelp.Text = "Password cannot be empty, ";
                 passwordHelp.Visible = true;
                 error = true;
             }
@@ -102,12 +97,10 @@ namespace TokoBeDia.Views
 
             if(gender.Length == 0)
             {
-                genderHelp.Text = "Must choose one, ";
+                genderHelp.Text = "Gender Must choose one, ";
                 genderHelp.Visible = true;
                 error = true;
             }
-
-            var check = UserRepository.getAll();
 
             var uByEmail = UserRepository.findByEmail(email);
             if(uByEmail != null)
@@ -117,8 +110,6 @@ namespace TokoBeDia.Views
                 error = true;
             }
             #endregion validate input
-
-           
 
             if (error == false)
             {
