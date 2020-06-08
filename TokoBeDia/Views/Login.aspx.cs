@@ -48,6 +48,10 @@ namespace TokoBeDia.Views
                 loginNavbar.Visible = true;
                 registerNavbar.Visible = true;
                 logoutNavbar.Visible = false;
+
+                paymentTypesNavbar.Visible = false;
+                paymenttype_view.Visible = false;
+                paymenttype_insert.Visible = false;
                 #endregion set navbar visible
 
             }

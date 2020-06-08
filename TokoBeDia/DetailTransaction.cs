@@ -18,7 +18,7 @@ namespace TokoBeDia
         public int ProductId { get; set; }
         public Nullable<int> Quantity { get; set; }
     
-        public virtual HeaderTransaction HeaderTransaction { get; set; }
         public virtual Product Product { get; set; }
+        public virtual HeaderTransaction HeaderTransaction { get; set; }
     }
 }

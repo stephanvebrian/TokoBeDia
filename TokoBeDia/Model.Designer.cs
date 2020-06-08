@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\StephanV\Desktop\Kuliah\Semester 04\Pattern Software Design - BE01 - COMP6114\LAB\Assignment\TokoBeDia\TokoBeDia\Model.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\StephanV\Desktop\Kuliah\Semester 04\Pattern Software Design - BE01 - COMP6114\LAB\Project\TokoBeDia\TokoBeDia\Model.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

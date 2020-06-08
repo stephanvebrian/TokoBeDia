@@ -22,9 +22,12 @@ namespace TokoBeDia
     
         public int Id { get; set; }
         public int UserId { get; set; }
+        public Nullable<int> PaymentTypeId { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailTransaction> DetailTransactions { get; set; }
+        public virtual PaymentType PaymentType { get; set; }
+        public virtual User User { get; set; }
     }
 }

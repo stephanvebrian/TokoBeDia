@@ -18,6 +18,7 @@ namespace TokoBeDia
         public Product()
         {
             this.DetailTransactions = new HashSet<DetailTransaction>();
+            this.Carts = new HashSet<Cart>();
         }
     
         public int Id { get; set; }
@@ -29,5 +30,7 @@ namespace TokoBeDia
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<DetailTransaction> DetailTransactions { get; set; }
         public virtual ProductType ProductType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Cart> Carts { get; set; }
     }
 }

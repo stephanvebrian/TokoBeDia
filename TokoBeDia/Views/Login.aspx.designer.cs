@@ -103,6 +103,33 @@ namespace TokoBeDia.Views {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor product_insert;
         
         /// <summary>
+        /// paymentTypesNavbar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl paymentTypesNavbar;
+        
+        /// <summary>
+        /// paymenttype_view control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor paymenttype_view;
+        
+        /// <summary>
+        /// paymenttype_insert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor paymenttype_insert;
+        
+        /// <summary>
         /// productTypesNavbar control.
         /// </summary>
         /// <remarks>

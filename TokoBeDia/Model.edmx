@@ -6,7 +6,19 @@
     <edmx:StorageModels>
     <Schema Namespace="DatabaseModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DESIGN - BE01 - COMP6114\LAB\ASSIGNMENT\TOKOBEDIA\TOKOBEDIA\APP_DATA\DATABASE.MDF.dbo.DetailTransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view '634CAE9DF883306A474FBDECE6127B7C_PATTERN SOFTWARE DESIGN - BE01 - COMP6114\LAB\PROJECT\TOKOBEDIA\TOKOBEDIA\APP_DATA\DATABASE.MDF.dbo.Carts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Carts">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ProductId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view '634CAE9DF883306A474FBDECE6127B7C_PATTERN SOFTWARE DESIGN - BE01 - COMP6114\LAB\PROJECT\TOKOBEDIA\TOKOBEDIA\APP_DATA\DATABASE.MDF.dbo.DetailTransactions' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="DetailTransactions">
           <Key>
             <PropertyRef Name="TransactionId" />
@@ -22,7 +34,15 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="int" />
           <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PaymentTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Products">
           <Key>
@@ -68,6 +88,30 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           <Property Name="Gender" Type="varchar" MaxLength="10" />
           <Property Name="StatusId" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK__Carts__ProductId__2A164134">
+          <End Role="Products" Type="Self.Products" Multiplicity="1" />
+          <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Carts__UserId__29221CFB">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Carts" Type="Self.Carts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Carts">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__DetailTra__Produ__3F466844">
           <End Role="Products" Type="Self.Products" Multiplicity="1" />
           <End Role="DetailTransactions" Type="Self.DetailTransactions" Multiplicity="*" />
@@ -80,7 +124,7 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__DetailTra__Trans__3E52440B">
+        <Association Name="FK__DetailTra__Trans__17F790F9">
           <End Role="HeaderTransactions" Type="Self.HeaderTransactions" Multiplicity="1" />
           <End Role="DetailTransactions" Type="Self.DetailTransactions" Multiplicity="*" />
           <ReferentialConstraint>
@@ -92,7 +136,31 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Products__Produc__403A8C7D">
+        <Association Name="FK__HeaderTra__Payme__18EBB532">
+          <End Role="PaymentTypes" Type="Self.PaymentTypes" Multiplicity="0..1" />
+          <End Role="HeaderTransactions" Type="Self.HeaderTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HeaderTransactions">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__UserI__3A4CA8FD">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="HeaderTransactions" Type="Self.HeaderTransactions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HeaderTransactions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__Produc__6EF57B66">
           <End Role="ProductTypes" Type="Self.ProductTypes" Multiplicity="1" />
           <End Role="Products" Type="Self.Products" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,11 +198,19 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
         </Association>
         <EntityContainer Name="DatabaseModelStoreContainer">
           <EntitySet Name="HeaderTransactions" EntityType="Self.HeaderTransactions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTypes" EntityType="Self.PaymentTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ProductTypes" EntityType="Self.ProductTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Carts" EntityType="Self.Carts" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Carts].[UserId] AS [UserId], 
+    [Carts].[ProductId] AS [ProductId], 
+    [Carts].[Quantity] AS [Quantity]
+    FROM [dbo].[Carts] AS [Carts]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="DetailTransactions" EntityType="Self.DetailTransactions" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [DetailTransactions].[TransactionId] AS [TransactionId], 
@@ -142,15 +218,31 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
     [DetailTransactions].[Quantity] AS [Quantity]
     FROM [dbo].[DetailTransactions] AS [DetailTransactions]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK__Carts__ProductId__2A164134" Association="Self.FK__Carts__ProductId__2A164134">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="Carts" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Carts__UserId__29221CFB" Association="Self.FK__Carts__UserId__29221CFB">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Carts" EntitySet="Carts" />
+          </AssociationSet>
           <AssociationSet Name="FK__DetailTra__Produ__3F466844" Association="Self.FK__DetailTra__Produ__3F466844">
             <End Role="Products" EntitySet="Products" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__DetailTra__Trans__3E52440B" Association="Self.FK__DetailTra__Trans__3E52440B">
+          <AssociationSet Name="FK__DetailTra__Trans__17F790F9" Association="Self.FK__DetailTra__Trans__17F790F9">
             <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
           </AssociationSet>
-          <AssociationSet Name="FK__Products__Produc__403A8C7D" Association="Self.FK__Products__Produc__403A8C7D">
+          <AssociationSet Name="FK__HeaderTra__Payme__18EBB532" Association="Self.FK__HeaderTra__Payme__18EBB532">
+            <End Role="PaymentTypes" EntitySet="PaymentTypes" />
+            <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__UserI__3A4CA8FD" Association="Self.FK__HeaderTra__UserI__3A4CA8FD">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__Produc__6EF57B66" Association="Self.FK__Products__Produc__6EF57B66">
             <End Role="ProductTypes" EntitySet="ProductTypes" />
             <End Role="Products" EntitySet="Products" />
           </AssociationSet>
@@ -167,15 +259,6 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="DatabaseModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="HeaderTransaction">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="Date" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="DetailTransactions" Relationship="Self.FK__DetailTra__Trans__3E52440B" FromRole="HeaderTransactions" ToRole="DetailTransactions" />
-        </EntityType>
         <EntityType Name="Product">
           <Key>
             <PropertyRef Name="Id" />
@@ -187,6 +270,7 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           <Property Name="Stock" Type="Int32" />
           <NavigationProperty Name="DetailTransactions" Relationship="Self.FK__DetailTra__Produ__3F466844" FromRole="Products" ToRole="DetailTransactions" />
           <NavigationProperty Name="ProductType" Relationship="Self.FK__Products__Produc__403A8C7D" FromRole="Products" ToRole="ProductTypes" />
+          <NavigationProperty Name="Carts" Relationship="DatabaseModel.FK__Carts__ProductId__2A164134" FromRole="Product" ToRole="Cart" />
         </EntityType>
         <EntityType Name="ProductType">
           <Key>
@@ -221,21 +305,9 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           <Property Name="TransactionId" Type="Int32" Nullable="false" />
           <Property Name="ProductId" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" />
-          <NavigationProperty Name="HeaderTransaction" Relationship="Self.FK__DetailTra__Trans__3E52440B" FromRole="DetailTransactions" ToRole="HeaderTransactions" />
           <NavigationProperty Name="Product" Relationship="Self.FK__DetailTra__Produ__3F466844" FromRole="DetailTransactions" ToRole="Products" />
+          <NavigationProperty Name="HeaderTransaction" Relationship="DatabaseModel.FK__DetailTra__Trans__17F790F9" FromRole="DetailTransaction" ToRole="HeaderTransaction" />
         </EntityType>
-        <Association Name="FK__DetailTra__Trans__3E52440B">
-          <End Role="HeaderTransactions" Type="Self.HeaderTransaction" Multiplicity="1" />
-          <End Role="DetailTransactions" Type="Self.DetailTransaction" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="HeaderTransactions">
-              <PropertyRef Name="Id" />
-            </Principal>
-            <Dependent Role="DetailTransactions">
-              <PropertyRef Name="TransactionId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__DetailTra__Produ__3F466844">
           <End Role="Products" Type="Self.Product" Multiplicity="1" />
           <End Role="DetailTransactions" Type="Self.DetailTransaction" Multiplicity="*" />
@@ -261,16 +333,11 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="DatabaseEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="HeaderTransactions" EntityType="Self.HeaderTransaction" />
           <EntitySet Name="Products" EntityType="Self.Product" />
           <EntitySet Name="ProductTypes" EntityType="Self.ProductType" />
           <EntitySet Name="Roles" EntityType="Self.Role" />
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="DetailTransactions" EntityType="Self.DetailTransaction" />
-          <AssociationSet Name="FK__DetailTra__Trans__3E52440B" Association="Self.FK__DetailTra__Trans__3E52440B">
-            <End Role="HeaderTransactions" EntitySet="HeaderTransactions" />
-            <End Role="DetailTransactions" EntitySet="DetailTransactions" />
-          </AssociationSet>
           <AssociationSet Name="FK__DetailTra__Produ__3F466844" Association="Self.FK__DetailTra__Produ__3F466844">
             <End Role="Products" EntitySet="Products" />
             <End Role="DetailTransactions" EntitySet="DetailTransactions" />
@@ -288,6 +355,29 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             <End Role="Status" EntitySet="Status" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Carts" EntityType="DatabaseModel.Cart" />
+          <AssociationSet Name="FK__Carts__ProductId__2A164134" Association="DatabaseModel.FK__Carts__ProductId__2A164134">
+            <End Role="Product" EntitySet="Products" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Carts__UserId__29221CFB" Association="DatabaseModel.FK__Carts__UserId__29221CFB">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Cart" EntitySet="Carts" />
+          </AssociationSet>
+          <EntitySet Name="PaymentTypes" EntityType="DatabaseModel.PaymentType" />
+          <EntitySet Name="HeaderTransactions" EntityType="DatabaseModel.HeaderTransaction" />
+          <AssociationSet Name="FK__DetailTra__Trans__17F790F9" Association="DatabaseModel.FK__DetailTra__Trans__17F790F9">
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+            <End Role="DetailTransaction" EntitySet="DetailTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__Payme__18EBB532" Association="DatabaseModel.FK__HeaderTra__Payme__18EBB532">
+            <End Role="PaymentType" EntitySet="PaymentTypes" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
+          <AssociationSet Name="FK__HeaderTra__UserI__3A4CA8FD" Association="DatabaseModel.FK__HeaderTra__UserI__3A4CA8FD">
+            <End Role="User" EntitySet="Users" />
+            <End Role="HeaderTransaction" EntitySet="HeaderTransactions" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -302,6 +392,8 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
           <Property Name="StatusId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Role" Relationship="DatabaseModel.FK__Users__RoleId__5DCAEF64" FromRole="User" ToRole="Role" />
           <NavigationProperty Name="Status" Relationship="DatabaseModel.FK__Users__StatusId__5CD6CB2B" FromRole="User" ToRole="Status" />
+          <NavigationProperty Name="Carts" Relationship="DatabaseModel.FK__Carts__UserId__29221CFB" FromRole="User" ToRole="Cart" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="DatabaseModel.FK__HeaderTra__UserI__3A4CA8FD" FromRole="User" ToRole="HeaderTransaction" />
         </EntityType>
         <Association Name="FK__Users__RoleId__5DCAEF64">
           <End Type="DatabaseModel.Role" Role="Role" Multiplicity="1" />
@@ -327,21 +419,104 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Cart">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="ProductId" />
+            <PropertyRef Name="Quantity" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ProductId" Type="Int32" Nullable="false" />
+          <Property Name="Quantity" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Product" Relationship="DatabaseModel.FK__Carts__ProductId__2A164134" FromRole="Cart" ToRole="Product" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK__Carts__UserId__29221CFB" FromRole="Cart" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Carts__ProductId__2A164134">
+          <End Type="DatabaseModel.Product" Role="Product" Multiplicity="1" />
+          <End Type="DatabaseModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Carts__UserId__29221CFB">
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="1" />
+          <End Type="DatabaseModel.Cart" Role="Cart" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cart">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PaymentType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="HeaderTransactions" Relationship="DatabaseModel.FK__HeaderTra__Payme__18EBB532" FromRole="PaymentType" ToRole="HeaderTransaction" />
+        </EntityType>
+        <EntityType Name="HeaderTransaction">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="PaymentTypeId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="DetailTransactions" Relationship="DatabaseModel.FK__DetailTra__Trans__17F790F9" FromRole="HeaderTransaction" ToRole="DetailTransaction" />
+          <NavigationProperty Name="PaymentType" Relationship="DatabaseModel.FK__HeaderTra__Payme__18EBB532" FromRole="HeaderTransaction" ToRole="PaymentType" />
+          <NavigationProperty Name="User" Relationship="DatabaseModel.FK__HeaderTra__UserI__3A4CA8FD" FromRole="HeaderTransaction" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__DetailTra__Trans__17F790F9">
+          <End Type="DatabaseModel.HeaderTransaction" Role="HeaderTransaction" Multiplicity="1" />
+          <End Type="DatabaseModel.DetailTransaction" Role="DetailTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HeaderTransaction">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="DetailTransaction">
+              <PropertyRef Name="TransactionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__Payme__18EBB532">
+          <End Type="DatabaseModel.PaymentType" Role="PaymentType" Multiplicity="0..1" />
+          <End Type="DatabaseModel.HeaderTransaction" Role="HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PaymentType">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="PaymentTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__HeaderTra__UserI__3A4CA8FD">
+          <End Type="DatabaseModel.User" Role="User" Multiplicity="1" />
+          <End Type="DatabaseModel.HeaderTransaction" Role="HeaderTransaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="HeaderTransaction">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DatabaseModelStoreContainer" CdmEntityContainer="DatabaseEntities">
-          <EntitySetMapping Name="HeaderTransactions">
-            <EntityTypeMapping TypeName="DatabaseModel.HeaderTransaction">
-              <MappingFragment StoreEntitySet="HeaderTransactions">
-                <ScalarProperty Name="Id" ColumnName="Id" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Products">
             <EntityTypeMapping TypeName="DatabaseModel.Product">
               <MappingFragment StoreEntitySet="Products">
@@ -396,6 +571,33 @@ warning 6002: The table/view '6D5870819455305882370F21D8C62E67_TERN SOFTWARE DES
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Carts">
+            <EntityTypeMapping TypeName="DatabaseModel.Cart">
+              <MappingFragment StoreEntitySet="Carts">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTypes">
+            <EntityTypeMapping TypeName="DatabaseModel.PaymentType">
+              <MappingFragment StoreEntitySet="PaymentTypes">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HeaderTransactions">
+            <EntityTypeMapping TypeName="DatabaseModel.HeaderTransaction">
+              <MappingFragment StoreEntitySet="HeaderTransactions">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="PaymentTypeId" ColumnName="PaymentTypeId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

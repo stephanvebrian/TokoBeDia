@@ -25,12 +25,14 @@ namespace TokoBeDia
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<HeaderTransaction> HeaderTransactions { get; set; }
         public virtual DbSet<Product> Products { get; set; }
         public virtual DbSet<ProductType> ProductTypes { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<Status> Status { get; set; }
         public virtual DbSet<DetailTransaction> DetailTransactions { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Cart> Carts { get; set; }
+        public virtual DbSet<PaymentType> PaymentTypes { get; set; }
+        public virtual DbSet<HeaderTransaction> HeaderTransactions { get; set; }
     }
 }

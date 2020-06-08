@@ -46,6 +46,10 @@ namespace TokoBeDia.Views.Product
                     loginNavbar.Visible = false;
                     registerNavbar.Visible = false;
                     logoutNavbar.Visible = true;
+
+                    paymentTypesNavbar.Visible = true;
+                    paymenttype_view.Visible = true;
+                    paymenttype_insert.Visible = true;
                     #endregion set navbar visible
                     gv_ViewProductAdmin.Visible = true;
                     gv_ViewProductPublic.Visible = false;
@@ -76,6 +80,10 @@ namespace TokoBeDia.Views.Product
                     loginNavbar.Visible = false;
                     registerNavbar.Visible = false;
                     logoutNavbar.Visible = true;
+
+                    paymentTypesNavbar.Visible = false;
+                    paymenttype_view.Visible = false;
+                    paymenttype_insert.Visible = false;
                     #endregion set navbar visible
                     gv_ViewProductAdmin.Visible = false;
                     gv_ViewProductPublic.Visible = true;
@@ -107,6 +115,10 @@ namespace TokoBeDia.Views.Product
                 loginNavbar.Visible = true;
                 registerNavbar.Visible = true;
                 logoutNavbar.Visible = false;
+
+                paymentTypesNavbar.Visible = false;
+                paymenttype_view.Visible = false;
+                paymenttype_insert.Visible = false;
                 #endregion set navbar visible
                 gv_ViewProductAdmin.Visible = false;
                 gv_ViewProductPublic.Visible = true;
