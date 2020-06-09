@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace TokoBeDia.Views.Profile {
+namespace TokoBeDia.Views.Cart {
     
     
     public partial class Edit {
@@ -220,49 +220,67 @@ namespace TokoBeDia.Views.Profile {
         protected global::System.Web.UI.WebControls.TextBox inputId;
         
         /// <summary>
-        /// inputRole control.
+        /// inputProductIdOld control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputRole;
+        protected global::System.Web.UI.WebControls.TextBox inputProductIdOld;
         
         /// <summary>
-        /// inputName control.
+        /// ddlProductName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputName;
+        protected global::System.Web.UI.WebControls.DropDownList ddlProductName;
         
         /// <summary>
-        /// inputEmail control.
+        /// inputProductPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputEmail;
+        protected global::System.Web.UI.WebControls.TextBox inputProductPrice;
         
         /// <summary>
-        /// inputGender control.
+        /// inputProductStock control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButtonList inputGender;
+        protected global::System.Web.UI.WebControls.TextBox inputProductStock;
         
         /// <summary>
-        /// inputStatus control.
+        /// inputProductType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox inputStatus;
+        protected global::System.Web.UI.WebControls.TextBox inputProductType;
+        
+        /// <summary>
+        /// inputQtyOld control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox inputQtyOld;
+        
+        /// <summary>
+        /// inputQty control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox inputQty;
         
         /// <summary>
         /// formHelp control.

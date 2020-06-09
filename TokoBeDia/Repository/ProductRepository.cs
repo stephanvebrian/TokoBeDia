@@ -20,6 +20,28 @@ namespace TokoBeDia.Repository
             return true;
         }
 
+        public static bool reduceStock(int id, int reduceQty)
+        {
+            var product = db.Products.Where(_ => _.Id == id).FirstOrDefault();
+            var stock = product.Stock - reduceQty;
+
+            product.Stock = stock;
+
+            db.SaveChanges();
+            return true;
+        }
+
+        public static bool addStock(int id, int addQty)
+        {
+            var product = db.Products.Where(_ => _.Id == id).FirstOrDefault();
+            var stock = product.Stock + addQty;
+
+            product.Stock = stock;
+
+            db.SaveChanges();
+            return true;
+        }
+
         public static List<Product> findTopFive()
         {
             var products = db.Products.ToList();

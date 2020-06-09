@@ -63,6 +63,15 @@
                             <%--<a class="dropdown-item" href="#" id="ptype_delete" runat="server" visible="false">Delete Product Types</a>--%>
                         </div>
                     </li>
+                    <li class="nav-item dropdown" id="cartNavbar" runat="server">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cart
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="../Cart/View.aspx" id="cart_view" runat="server">View Cart</a>
+                            <a class="dropdown-item" href="../Cart/Add.aspx" id="cart_insert" runat="server">Insert Cart</a>
+                        </div>
+                    </li>
                     <li class="nav-item" id="loginNavbar" runat="server">
                         <a class="nav-link" href="../Login.aspx">Login</a>
                     </li>

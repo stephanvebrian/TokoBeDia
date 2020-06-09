@@ -157,6 +157,33 @@ namespace TokoBeDia.Views {
         protected global::System.Web.UI.HtmlControls.HtmlAnchor ptype_insert;
         
         /// <summary>
+        /// cartNavbar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl cartNavbar;
+        
+        /// <summary>
+        /// cart_view control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor cart_view;
+        
+        /// <summary>
+        /// cart_insert control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor cart_insert;
+        
+        /// <summary>
         /// loginNavbar control.
         /// </summary>
         /// <remarks>
@@ -200,6 +227,24 @@ namespace TokoBeDia.Views {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label notificationcontainer;
+        
+        /// <summary>
+        /// btnTransactionReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTransactionReport;
+        
+        /// <summary>
+        /// btnTransactionHistory control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTransactionHistory;
         
         /// <summary>
         /// gv_ViewProductAdmin control.

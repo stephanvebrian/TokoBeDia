@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using TokoBeDia.Repository;
 
-namespace TokoBeDia.Views.Profile
+namespace TokoBeDia.Views.Cart
 {
     public partial class View : System.Web.UI.Page
     {
@@ -24,37 +24,7 @@ namespace TokoBeDia.Views.Profile
                 if (user.RoleId == 1)
                 {
                     // Admin
-                    #region set admin navbar visible
-                    homeNavbar.Visible = true;
-
-                    profileNavbar.Visible = true;
-                    profile_view.Visible = true;
-                    profile_changeprof.Visible = true;
-                    profile_changepass.Visible = true;
-
-                    usersNavbar.Visible = true;
-                    user_view.Visible = true;
-
-                    productsNavbar.Visible = true;
-                    product_view.Visible = true;
-                    product_insert.Visible = true;
-
-                    productTypesNavbar.Visible = true;
-                    ptype_view.Visible = true;
-                    ptype_insert.Visible = true;
-
-                    loginNavbar.Visible = false;
-                    registerNavbar.Visible = false;
-                    logoutNavbar.Visible = true;
-
-                    paymentTypesNavbar.Visible = true;
-                    paymenttype_view.Visible = true;
-                    paymenttype_insert.Visible = true;
-
-                    cartNavbar.Visible = false;
-                    cart_view.Visible = false;
-                    cart_insert.Visible = false;
-                    #endregion set navbar visible
+                    Response.Redirect("../Home.aspx");
 
                 }
                 else if (user.RoleId == 2)
@@ -91,21 +61,46 @@ namespace TokoBeDia.Views.Profile
                     cart_view.Visible = true;
                     cart_insert.Visible = true;
                     #endregion set navbar visible
+                    gv_ViewMemberCart.Visible = true;
                 }
 
-                lblId.Text = user.Id.ToString();
-                lblRole.Text = user.Role.Name;
-                lblName.Text = user.Name;
-                lblEmail.Text = user.Email;
-                lblGender.Text = user.Gender;            
             }
             else
             {
+                // Guest
                 Response.Redirect("../Home.aspx");
             }
             #endregion check session & set navbar
 
+            refreshTable();
+        }
 
+        private void refreshTable()
+        {
+            var carts = CartRepository.findByUserId(int.Parse(Session["user"].ToString()));
+
+            //var cartSample = new { Id = 0, ProductId = 0, ProductName = "Sample", Quantity = 0 };
+
+            var listCart = new List<dynamic>();
+
+            foreach (var item in carts)
+            {
+                var product = ProductRepository.findById(item.ProductId);
+                var obj = new
+                {
+                    Id = item.Id,
+                    ProductId = item.ProductId,
+                    ProductName = product.Name,
+                    Quantity = item.Quantity
+                };
+
+                listCart.Add(obj);
+            }
+
+            //listCart.RemoveAt(0);
+            
+            gv_ViewMemberCart.DataSource = listCart;
+            gv_ViewMemberCart.DataBind();
         }
     }
 }

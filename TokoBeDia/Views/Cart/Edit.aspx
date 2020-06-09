@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="TokoBeDia.Views.User.Edit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="TokoBeDia.Views.Cart.Edit" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="style" runat="server">
 </asp:Content>
-<asp:Content ID="navbar" ContentPlaceHolderID="navbarContainer" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="navbarContainer" runat="server">
     <div class="navbar navbar-expand">
         <div class="container-fluid">
             <div class="collapse navbar-collapse">
@@ -91,45 +91,56 @@
     <div class="home" style="min-height: 650px; height: 100%">
 	    <div class="container">
 		    <div class="row justify-content-center mt-5">
-                <div><h4>User/Edit.aspx</h4></div>
+                <div><h4>Cart/Add.aspx</h4></div>
 		    </div>
 	    </div>
 	    <div class="container">
 		    <div class="row justify-content-center mt-5">
                 <div>
-                    <h4 style="color: #532e43;">Edit User</h4>
-                     <div class="form-group">
-                        <label for="id">ID</label>
-                        <asp:TextBox ID="inputId" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
+                    <h4 style="color: #532e43;">Add Into Cart</h4>
+                    
+                    <div class="form-group">
+                        <asp:TextBox ID="inputId" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="inputProductIdOld" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true" Visible="false"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="Product">Product Name</label>
+                        <asp:DropDownList ID="ddlProductName" CssClass="form-control" runat="server"
+                                OnSelectedIndexChanged="ddlProductName_SelectedIndexChanged" AutoPostBack="true">
+                        </asp:DropDownList>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Product Price</label>
+                        <asp:TextBox ID="inputProductPrice" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Product Stock</label>
+                        <asp:TextBox ID="inputProductStock" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Product Type</label>
+                        <asp:TextBox ID="inputProductType" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="qty">Quantity</label>
+                        <asp:TextBox ID="inputQtyOld" CssClass="form-control" runat="server" TextMode="Number" Visible="false"></asp:TextBox>
+                        <asp:TextBox ID="inputQty" CssClass="form-control" runat="server" TextMode="Number" ></asp:TextBox>
+                        <small id="qtyHelp" class="form-text text-muted">Input must be 1 or more</small>
                       </div>
-                      <div class="form-group">
-                        <label for="role">Role</label>
-                         <asp:DropDownList ID="ddlRole" CssClass="form-control" runat="server" ReadOnly="true"></asp:DropDownList>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Name</label>
-                        <asp:TextBox ID="inputName" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <asp:TextBox ID="inputEmail" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
-                      </div>
-                      <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <asp:DropDownList ID="ddlGender" CssClass="form-control" runat="server" ReadOnly="true" Enabled="false"></asp:DropDownList>
-                      </div>
-                      <div class="form-group">
-                        <label for="status">Status</label>
-                        <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server"></asp:DropDownList>
-                      </div>                      
+                    
                       <asp:Label ID="formHelp" CssClass="form-text text-muted" runat="server" Text="Error" Visible="false"></asp:Label>
-                      <asp:Button ID="btnEdit" CssClass="btn btn-primary" runat="server" Text="Update User" OnClick="btnEdit_Click" />
+                      <asp:Button ID="btnEdit" CssClass="btn btn-primary" runat="server" Text="Add Cart" OnClick="btnEdit_Click" />
                     <br />
                 </div>
+
 		    </div>
 	    </div>
     </div>
 </asp:Content>
 
-<asp:Content ID="Content6" ContentPlaceHolderID="script" runat="server">
+<asp:Content ID="js" ContentPlaceHolderID="script" runat="server">
+    <script src="../../Content/js/jquery-3.2.1.min.js"></script>
+    <script src="../../Content/js/popper.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
 </asp:Content>

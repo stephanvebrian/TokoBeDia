@@ -1,9 +1,9 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Site.Master" AutoEventWireup="true" CodeBehind="Edit.aspx.cs" Inherits="TokoBeDia.Views.User.Edit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Site.Master" AutoEventWireup="true" CodeBehind="View.aspx.cs" Inherits="TokoBeDia.Views.Cart.View" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="style" runat="server">
 </asp:Content>
-<asp:Content ID="navbar" ContentPlaceHolderID="navbarContainer" runat="server">
+<asp:Content ID="Content3" ContentPlaceHolderID="navbarContainer" runat="server">
     <div class="navbar navbar-expand">
         <div class="container-fluid">
             <div class="collapse navbar-collapse">
@@ -88,48 +88,39 @@
 <asp:Content ID="Content4" ContentPlaceHolderID="informationLabel" runat="server">
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    <div class="home" style="min-height: 650px; height: 100%">
+    <div class="home" style="height: 100%; min-height: 650px;">
 	    <div class="container">
 		    <div class="row justify-content-center mt-5">
-                <div><h4>User/Edit.aspx</h4></div>
+                <div><h4>Cart/View.aspx</h4></div>
+                <div><h4>My Cart</h4></div>
 		    </div>
 	    </div>
-	    <div class="container">
+        <div class="container" runat="server">
 		    <div class="row justify-content-center mt-5">
                 <div>
-                    <h4 style="color: #532e43;">Edit User</h4>
-                     <div class="form-group">
-                        <label for="id">ID</label>
-                        <asp:TextBox ID="inputId" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
-                      </div>
-                      <div class="form-group">
-                        <label for="role">Role</label>
-                         <asp:DropDownList ID="ddlRole" CssClass="form-control" runat="server" ReadOnly="true"></asp:DropDownList>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Name</label>
-                        <asp:TextBox ID="inputName" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
-                      </div>
-                      <div class="form-group">
-                        <label for="email">Email</label>
-                        <asp:TextBox ID="inputEmail" CssClass="form-control" runat="server" TextMode="SingleLine" ReadOnly="true"></asp:TextBox>
-                      </div>
-                      <div class="form-group">
-                        <label for="gender">Gender</label>
-                        <asp:DropDownList ID="ddlGender" CssClass="form-control" runat="server" ReadOnly="true" Enabled="false"></asp:DropDownList>
-                      </div>
-                      <div class="form-group">
-                        <label for="status">Status</label>
-                        <asp:DropDownList ID="ddlStatus" CssClass="form-control" runat="server"></asp:DropDownList>
-                      </div>                      
-                      <asp:Label ID="formHelp" CssClass="form-text text-muted" runat="server" Text="Error" Visible="false"></asp:Label>
-                      <asp:Button ID="btnEdit" CssClass="btn btn-primary" runat="server" Text="Update User" OnClick="btnEdit_Click" />
-                    <br />
+                    <asp:GridView ID="gv_ViewMemberCart" AutoGenerateColumns="false" UseAccessibleHeader="true" 
+                        DataKeyNames="Id"
+                        CssClass="table table-condensed table-hover" HorizontalAlign="Center" Width="70%" runat="server">
+                        <Columns>  
+                            <asp:BoundField DataField="Id" HeaderText="Cart ID" />  
+                            <%--<asp:BoundField DataField="User.Name" HeaderText="User Name" />--%>  
+                            <%--<asp:BoundField DataField="Product.Name" HeaderText="Product Name" />--%>  
+                            <asp:BoundField DataField="ProductName" HeaderText="Product Name" />  
+                            <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
+                            
+                            <%--<asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Detail.aspx?id={0}"  Text="Detail"/>--%>
+                            <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Edit.aspx?id={0}"  Text="Edit" />
+                            <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Delete.aspx?id={0}"  Text="Delete" />
+                        </Columns> 
+                    </asp:GridView>
                 </div>
-		    </div>
+            </div>
 	    </div>
     </div>
 </asp:Content>
 
-<asp:Content ID="Content6" ContentPlaceHolderID="script" runat="server">
+<asp:Content ID="js" ContentPlaceHolderID="script" runat="server">
+    <script src="../../Content/js/jquery-3.2.1.min.js"></script>
+    <script src="../../Content/js/popper.js"></script>
+    <script src="../../Content/js/bootstrap.min.js"></script>
 </asp:Content>

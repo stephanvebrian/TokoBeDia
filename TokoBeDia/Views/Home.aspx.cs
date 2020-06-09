@@ -53,6 +53,13 @@ namespace TokoBeDia.Views
                     paymenttype_view.Visible = true;
                     paymenttype_insert.Visible = true;
 
+                    //remind set to false
+                    cartNavbar.Visible = true;
+                    cart_view.Visible = true;
+                    cart_insert.Visible = true;
+
+                    btnTransactionReport.Visible = true;
+                    btnTransactionHistory.Visible = false;
                     #endregion set navbar visible
                     gv_ViewProductAdmin.Visible = true;
                     gv_ViewProductPublic.Visible = false;
@@ -86,6 +93,13 @@ namespace TokoBeDia.Views
                     paymentTypesNavbar.Visible = false;
                     paymenttype_view.Visible = false;
                     paymenttype_insert.Visible = false;
+
+                    cartNavbar.Visible = true;
+                    cart_view.Visible = true;
+                    cart_insert.Visible = true;
+
+                    btnTransactionReport.Visible = false;
+                    btnTransactionHistory.Visible = true;
                     #endregion set navbar visible
                     gv_ViewProductAdmin.Visible = false;
                     gv_ViewProductPublic.Visible = true;
@@ -123,6 +137,13 @@ namespace TokoBeDia.Views
                 paymentTypesNavbar.Visible = false;
                 paymenttype_view.Visible = false;
                 paymenttype_insert.Visible = false;
+
+                cartNavbar.Visible = false;
+                cart_view.Visible = false;
+                cart_insert.Visible = false;
+
+                btnTransactionReport.Visible = false;
+                btnTransactionHistory.Visible = false;
                 #endregion set navbar visible
                 role.InnerText = "Guest";
                 notificationcontainer.Text = "Please Login first";
@@ -141,6 +162,16 @@ namespace TokoBeDia.Views
 
             gv_ViewProductPublic.DataSource = ProductRepository.findTopFive();
             gv_ViewProductPublic.DataBind();
+        }
+
+        protected void btnTransactionReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnTransactionHistory_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

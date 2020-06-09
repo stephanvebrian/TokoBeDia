@@ -65,6 +65,15 @@
                             <%--<a class="dropdown-item" href="#" id="ptype_delete" runat="server" visible="false">Delete Product Types</a>--%>
                         </div>
                     </li>
+                    <li class="nav-item dropdown" id="cartNavbar" runat="server">
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cart
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                            <a class="dropdown-item" href="~/Views/Cart/View.aspx" id="cart_view" runat="server">View Cart</a>
+                            <a class="dropdown-item" href="~/Views/Cart/Add.aspx" id="cart_insert" runat="server">Insert Cart</a>
+                        </div>
+                    </li>
                     <li class="nav-item" id="loginNavbar" runat="server">
                         <a class="nav-link" href="Login.aspx">Login</a>
                     </li>
@@ -95,6 +104,11 @@
 		    </div>
 	    </div>
         <div class="container" runat="server">
+            <div class="row justify-content-center mt-5">
+                <asp:Button ID="btnTransactionReport" CssClass="btn btn-primary" runat="server" Text="Transaction Report" OnClick="btnTransactionReport_Click" />
+                <asp:Button ID="btnTransactionHistory" CssClass="btn btn-primary" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" />
+            </div>
+
 		    <div class="row justify-content-center mt-5">
                 <div>
                     <div><h4 style="text-align:center;">Top 5 Product</h4></div>

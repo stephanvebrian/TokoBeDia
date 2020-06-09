@@ -15,14 +15,14 @@
         <EntityTypeShape EntityType="DatabaseModel.User" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="DatabaseModel.FK__Users__RoleId__5DCAEF64" />
         <AssociationConnector Association="DatabaseModel.FK__Users__StatusId__5CD6CB2B" />
-        <EntityTypeShape EntityType="DatabaseModel.Cart" Width="1.5" PointX="8.625" PointY="7.375" />
-        <AssociationConnector Association="DatabaseModel.FK__Carts__ProductId__2A164134" />
-        <AssociationConnector Association="DatabaseModel.FK__Carts__UserId__29221CFB" />
         <EntityTypeShape EntityType="DatabaseModel.PaymentType" Width="1.5" PointX="11.125" PointY="5.875" />
         <EntityTypeShape EntityType="DatabaseModel.HeaderTransaction" Width="1.5" PointX="5.25" PointY="0.875" />
         <AssociationConnector Association="DatabaseModel.FK__DetailTra__Trans__17F790F9" />
         <AssociationConnector Association="DatabaseModel.FK__HeaderTra__Payme__18EBB532" />
         <AssociationConnector Association="DatabaseModel.FK__HeaderTra__UserI__3A4CA8FD" />
+        <EntityTypeShape EntityType="DatabaseModel.Cart" Width="1.5" PointX="8.375" PointY="4.625" />
+        <AssociationConnector Association="DatabaseModel.FK__Carts__ProductId__503BEA1C" />
+        <AssociationConnector Association="DatabaseModel.FK__Carts__UserId__4F47C5E3" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

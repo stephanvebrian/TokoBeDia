@@ -52,6 +52,10 @@ namespace TokoBeDia.Views.User
                         paymentTypesNavbar.Visible = true;
                         paymenttype_view.Visible = true;
                         paymenttype_insert.Visible = true;
+
+                        cartNavbar.Visible = false;
+                        cart_view.Visible = false;
+                        cart_insert.Visible = false;
                         #endregion set navbar visible
 
                         var userIdParam = Request.QueryString["id"];
