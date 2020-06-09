@@ -59,7 +59,8 @@ namespace TokoBeDia.Views
                     cart_insert.Visible = true;
 
                     btnTransactionReport.Visible = true;
-                    btnTransactionHistory.Visible = false;
+                    btnTransactionHistoryAdmin.Visible = true;
+                    btnTransactionHistoryMember.Visible = false;
                     #endregion set navbar visible
                     gv_ViewProductAdmin.Visible = true;
                     gv_ViewProductPublic.Visible = false;
@@ -99,7 +100,8 @@ namespace TokoBeDia.Views
                     cart_insert.Visible = true;
 
                     btnTransactionReport.Visible = false;
-                    btnTransactionHistory.Visible = true;
+                    btnTransactionHistoryAdmin.Visible = false;
+                    btnTransactionHistoryMember.Visible = true;
                     #endregion set navbar visible
                     gv_ViewProductAdmin.Visible = false;
                     gv_ViewProductPublic.Visible = true;
@@ -143,7 +145,8 @@ namespace TokoBeDia.Views
                 cart_insert.Visible = false;
 
                 btnTransactionReport.Visible = false;
-                btnTransactionHistory.Visible = false;
+                btnTransactionHistoryAdmin.Visible = false;
+                btnTransactionHistoryMember.Visible = false;
                 #endregion set navbar visible
                 role.InnerText = "Guest";
                 notificationcontainer.Text = "Please Login first";
@@ -166,11 +169,17 @@ namespace TokoBeDia.Views
 
         protected void btnTransactionReport_Click(object sender, EventArgs e)
         {
-
+            Response.Redirect("Report/View.aspx");
         }
 
-        protected void btnTransactionHistory_Click(object sender, EventArgs e)
+        protected void btnTransactionHistoryAdmin_Click(object sender, EventArgs e)
         {
+            Response.Redirect("TransactionHistory/Admin.aspx");
+        }
+
+        protected void btnTransactionHistoryMember_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("TransactionHistory/Member.aspx");
 
         }
     }

@@ -107,12 +107,27 @@
                             <%--<asp:BoundField DataField="Product.Name" HeaderText="Product Name" />--%>  
                             <asp:BoundField DataField="ProductName" HeaderText="Product Name" />  
                             <asp:BoundField DataField="Quantity" HeaderText="Quantity" />
+                            <asp:BoundField DataField="Subtotal" HeaderText="Subtotal" />
                             
                             <%--<asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Detail.aspx?id={0}"  Text="Detail"/>--%>
                             <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Edit.aspx?id={0}"  Text="Edit" />
                             <asp:HyperLinkField DataNavigateUrlFields="Id" DataNavigateUrlFormatString="Delete.aspx?id={0}"  Text="Delete" />
                         </Columns> 
                     </asp:GridView>
+                </div>
+                <div>
+                    <div class="row">
+                        <div>Total Quantity </div>
+                        <div>
+                            <asp:Label ID="totalQuantity" Text="" runat="server" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div>Grand Total </div>
+                        <div>
+                            <asp:Label ID="grandTotal" Text="" runat="server" />
+                        </div>
+                    </div>
                 </div>
             </div>
 	    </div>

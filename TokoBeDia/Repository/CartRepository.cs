@@ -20,6 +20,17 @@ namespace TokoBeDia.Repository
             return true;
         }
 
+        public static bool addQty(int userId, int productId, int qty)
+        {
+            var cart = findByUserIdAndProductId(userId, productId);
+            int qtyNew = cart.Quantity + qty;
+            cart.Quantity = qtyNew;
+
+            db.SaveChanges();
+
+            return true;
+        }
+
         public static List<Cart> findAll()
         {
             var carts = db.Carts.ToList();
@@ -44,6 +55,13 @@ namespace TokoBeDia.Repository
         public static Cart findByProductId(int productId)
         {
             var cart = db.Carts.Where(_ => _.ProductId == productId).FirstOrDefault();
+
+            return cart;
+        }
+
+        public static Cart findByUserIdAndProductId(int userId, int productId)
+        {
+            var cart = db.Carts.Where(_ => _.UserId == userId && _.ProductId == productId).FirstOrDefault();
 
             return cart;
         }

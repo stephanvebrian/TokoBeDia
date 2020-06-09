@@ -238,13 +238,22 @@ namespace TokoBeDia.Views {
         protected global::System.Web.UI.WebControls.Button btnTransactionReport;
         
         /// <summary>
-        /// btnTransactionHistory control.
+        /// btnTransactionHistoryAdmin control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnTransactionHistory;
+        protected global::System.Web.UI.WebControls.Button btnTransactionHistoryAdmin;
+        
+        /// <summary>
+        /// btnTransactionHistoryMember control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnTransactionHistoryMember;
         
         /// <summary>
         /// gv_ViewProductAdmin control.

@@ -77,30 +77,34 @@ namespace TokoBeDia.Views.Cart
 
         private void refreshTable()
         {
+            int totalQty = 0;
+            int totalPrice = 0;
             var carts = CartRepository.findByUserId(int.Parse(Session["user"].ToString()));
-
-            //var cartSample = new { Id = 0, ProductId = 0, ProductName = "Sample", Quantity = 0 };
 
             var listCart = new List<dynamic>();
 
             foreach (var item in carts)
             {
                 var product = ProductRepository.findById(item.ProductId);
+                totalQty += item.Quantity;
+                totalPrice = (int.Parse(product.Price.ToString()) * item.Quantity) + totalPrice;
                 var obj = new
                 {
                     Id = item.Id,
                     ProductId = item.ProductId,
                     ProductName = product.Name,
-                    Quantity = item.Quantity
+                    Quantity = item.Quantity,
+                    Subtotal = int.Parse(product.Price.ToString()) * item.Quantity
                 };
 
                 listCart.Add(obj);
             }
-
-            //listCart.RemoveAt(0);
             
             gv_ViewMemberCart.DataSource = listCart;
             gv_ViewMemberCart.DataBind();
+
+            totalQuantity.Text = totalQty.ToString();
+            grandTotal.Text = totalPrice.ToString();
         }
     }
 }

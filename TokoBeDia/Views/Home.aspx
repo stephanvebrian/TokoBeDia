@@ -106,7 +106,8 @@
         <div class="container" runat="server">
             <div class="row justify-content-center mt-5">
                 <asp:Button ID="btnTransactionReport" CssClass="btn btn-primary" runat="server" Text="Transaction Report" OnClick="btnTransactionReport_Click" />
-                <asp:Button ID="btnTransactionHistory" CssClass="btn btn-primary" runat="server" Text="Transaction History" OnClick="btnTransactionHistory_Click" />
+                <asp:Button ID="btnTransactionHistoryAdmin" CssClass="btn btn-primary" runat="server" Text="Transaction History Admin" OnClick="btnTransactionHistoryAdmin_Click" />
+                <asp:Button ID="btnTransactionHistoryMember" CssClass="btn btn-primary" runat="server" Text="Transaction History Member" OnClick="btnTransactionHistoryMember_Click" />
             </div>
 
 		    <div class="row justify-content-center mt-5">

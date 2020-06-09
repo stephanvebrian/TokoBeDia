@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using TokoBeDia.Handler;
 using TokoBeDia.Repository;
 
 namespace TokoBeDia.Views.Cart
@@ -117,7 +118,7 @@ namespace TokoBeDia.Views.Cart
             }
 
             ProductRepository.reduceStock(productId, qty);
-            CartRepository.add(userId, productId, qty);
+            CartHandler.add(userId, productId, qty);
 
             Response.Redirect("View.aspx");
         }
